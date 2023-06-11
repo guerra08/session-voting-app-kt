@@ -10,10 +10,10 @@ class Schedule(
     var id: Long? = null,
     @Column(name = "name")
     val name: String,
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_schedule")
     val sessions: List<Session> = mutableListOf()
 )
 
-fun Schedule.toResponse(): ScheduleResponse {
-    return ScheduleResponse(this.id, this.name)
-}
+fun Schedule.toResponse() =
+    ScheduleResponse(this.id, this.name)

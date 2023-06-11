@@ -31,14 +31,13 @@ fun Session.close() {
     this.closeTime = Instant.now()
 }
 
-fun Session.toResponse(): SessionResponse {
-    return SessionResponse(
+fun Session.toResponse() =
+    SessionResponse(
         this.id,
         this.durationMinutes,
         this.startTime,
         this.startTime.plus(this.durationMinutes.toLong(), ChronoUnit.MINUTES)
     )
-}
 
 fun Session.isExpired() =
     this.startTime.plus(this.durationMinutes.toLong(), ChronoUnit.MINUTES) isBefore Instant.now()

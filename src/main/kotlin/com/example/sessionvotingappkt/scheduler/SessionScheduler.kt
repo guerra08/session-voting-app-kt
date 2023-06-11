@@ -25,7 +25,7 @@ class SessionScheduler(
     fun closeSessionRoutine() {
         val closedSessions = sessionService.closeExpiredSessions()
         if (closedSessions.isNotEmpty()) {
-            log.info("Closed expired session. Sending notifications to RabbitMQ queue...")
+            log.info("Closed expired sessions. Sending notifications to RabbitMQ queue...")
             val sessionsReports = closedSessions.map { voteService.getReportForSession(it.id!!) }
             sessionsReports.forEach {
                 rabbitTemplate.convertAndSend(queue.name, it.toString())

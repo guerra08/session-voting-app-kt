@@ -9,7 +9,7 @@ import java.util.*
 interface ScheduleService {
     /**
      * Creates a new Schedule entry in the database
-     * @param createPautaDto The DTO to create a new 'Schedule'
+     * @param createScheduleDto The DTO to create a new 'Schedule'
      * @return Mono with the newly created 'Schedule'
      */
     fun create(createScheduleDto: CreateScheduleRequest): ScheduleResponse

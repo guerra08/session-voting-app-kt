@@ -19,7 +19,7 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(BadVoteRequestException::class)
     fun handleBadVoteRequestException(e: BadVoteRequestException): ProblemDetail {
-        log.info("Bad vote request", e)
+        log.info("Bad vote request. {}", e.message)
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.message)
     }
 
@@ -30,13 +30,13 @@ class GlobalExceptionHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(SessionConflictException::class)
     fun handleScheduleNotFoundException(e: SessionConflictException): ProblemDetail {
-        log.info("Session conflict", e)
+        log.info("Session conflict. {}", e.message)
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.message)
     }
 
     @ExceptionHandler(VoteConflictException::class)
     fun handleVoteConflictException(e: VoteConflictException): ProblemDetail {
-        log.info("Vote conflict", e)
+        log.info("Vote conflict. {}", e.message)
         return ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, e.message)
     }
 

@@ -1,6 +1,7 @@
 package com.example.sessionvotingappkt.external
 
 import com.example.sessionvotingappkt.external.impl.DefaultAssociateValidation
+import com.example.sessionvotingappkt.util.CpfValidationResults
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.jupiter.api.Assertions.assertFalse
@@ -42,7 +43,7 @@ class AssociateValidationTests {
         val server = MockWebServer()
         server.start()
 
-        server.enqueue(MockResponse().setBody("{\"status\": \"ABLE_TO_VOTE\"}").setResponseCode(200))
+        server.enqueue(MockResponse().setBody(CpfValidationResults.ABLE_TO_VOTE.text).setResponseCode(200))
         val sut: AssociateValidation = DefaultAssociateValidation(WebClient.builder(), true, server.url("").toString())
 
         val result = sut.validateAssociateCpf("12345678912")
@@ -59,7 +60,7 @@ class AssociateValidationTests {
         val server = MockWebServer()
         server.start()
 
-        server.enqueue(MockResponse().setBody("{\"status\": \"UNABLE_TO_VOTE\"}").setResponseCode(200))
+        server.enqueue(MockResponse().setBody(CpfValidationResults.UNABLE_TO_VOTE.text).setResponseCode(200))
         val sut: AssociateValidation = DefaultAssociateValidation(WebClient.builder(), true, server.url("").toString())
 
         val result = sut.validateAssociateCpf("12345678912")

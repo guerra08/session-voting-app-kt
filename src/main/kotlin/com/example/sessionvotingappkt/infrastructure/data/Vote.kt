@@ -23,6 +23,4 @@ class Vote(
     val session: Session? = null
 )
 
-fun Vote.toResponse(): VoteResponse {
-    return VoteResponse(this.id, VotingOptions.valueOf(this.option), this.creationTime)
-}
+fun Vote.toResponse() = VoteResponse(this.id, VotingOptions.valueOf(this.option), this.creationTime)

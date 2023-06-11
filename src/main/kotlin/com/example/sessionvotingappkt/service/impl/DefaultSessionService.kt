@@ -47,9 +47,9 @@ class DefaultSessionService(
         }
     }
 
-    override fun existsById(sessionId: Long): Boolean {
-        return sessionRepository.existsById(sessionId)
-    }
+    override fun existsById(sessionId: Long) =
+        sessionRepository.existsById(sessionId)
+
 
     override fun closeExpiredSessions(): List<SessionResponse> {
         val markedAsActive = sessionRepository.findAllMarkedAsActive()

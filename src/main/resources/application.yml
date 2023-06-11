@@ -1,0 +1,28 @@
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  servlet:
+    contextPath: '/api/v1'
+
+cpf-validation:
+  enabled: false
+  url: https://user-info.herokuapp.com/users

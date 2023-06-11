@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.8.21"
     kotlin("plugin.spring") version "1.8.21"
     kotlin("plugin.jpa") version "1.8.21"
+    id("org.jetbrains.kotlinx.kover") version "0.7.1"
 }
 
 group = "com.example"

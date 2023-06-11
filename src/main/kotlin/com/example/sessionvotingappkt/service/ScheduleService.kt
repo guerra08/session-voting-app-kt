@@ -4,7 +4,6 @@ import com.example.sessionvotingappkt.web.dto.request.CreateScheduleRequest
 import com.example.sessionvotingappkt.web.dto.response.ScheduleResponse
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
-import java.util.*
 
 interface ScheduleService {
     /**

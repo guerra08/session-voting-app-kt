@@ -28,7 +28,7 @@ class DefaultSessionService(
 
         var entity = Session(
             startTime = now,
-            durationMinutes = createSessionRequest.durationMinutes,
+            durationMinutes = createSessionRequest.durationMinutes ?: 1,
             isActive = true,
             idSchedule = scheduleId
         )
